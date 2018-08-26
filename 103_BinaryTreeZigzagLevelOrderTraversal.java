@@ -3,7 +3,6 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
-
 public class TreeNode {
     int val;
     TreeNode left;
@@ -27,7 +26,13 @@ class Solution {
         searchQueue.add(null);
 
         while (searchQueue.size() > 1) {
+
+            if (res.size() <= depth) {
+                res.add(new LinkedList<>());
+            }
+
             TreeNode cur = searchQueue.poll();
+
             if (cur == null) {
                 searchQueue.add(null);
                 depth++;
@@ -40,23 +45,13 @@ class Solution {
                     searchQueue.add(cur.right);
                 }
 
-                if (map.get(depth) == null) {
-                    List<Integer> list = new ArrayList<>();
-                    list.add(cur.val);
-                    map.put(depth, list);
-                } else {
-                    map.get(depth).add(cur.val);
-                }
+                if (depth % 2 == 0)
+                    res.get(depth).add(cur.val);
+                else
+                    res.get(depth).add(0, cur.val);
             }
         }
-        map.entrySet().forEach(e -> {
-            List<Integer> value = e.getValue();
-            if (e.getKey() % 2 != 0) {
-                Collections.reverse(value);
-            }
-            res.add(value);
-        });
         return res;
-
+    
     }
 }
