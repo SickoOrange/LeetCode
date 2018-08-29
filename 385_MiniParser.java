@@ -28,8 +28,7 @@ class Solution {
         if (!s.startsWith("[")) {
             return new NestedInteger(Integer.valueOf(s));
         }
-
-        int i = 0;
+         int i = 0;
         Stack<NestedInteger> stack = new Stack<>();
         NestedInteger currentNI = null;
         while (i < s.length()) {
@@ -49,8 +48,7 @@ class Solution {
                 currentNI = stack.peek();
                 i++;
             } else {
-
-                if (s.charAt(i) == ',') {
+                 if (s.charAt(i) == ',') {
                     i++;
                 } else {
                     StringBuffer buf = new StringBuffer();
@@ -64,10 +62,8 @@ class Solution {
                         i++;
                     }
                 }
-
-            }
+             }
         }
         return currentNI;
     }
-
-}
+ }
