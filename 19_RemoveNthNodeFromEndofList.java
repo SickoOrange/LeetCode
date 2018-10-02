@@ -7,6 +7,7 @@
  * }
  */
 class Solution {
+    ////chanllage: use recursive, at last we add 1 untill count=n 
     public ListNode removeNthFromEnd(ListNode head, int n) {
        if(head==null) return head;
         ListNode slow=head;
